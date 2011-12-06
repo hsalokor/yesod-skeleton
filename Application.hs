@@ -14,18 +14,10 @@ import Yesod.Logger (Logger)
 import Network.Wai (Application)
 import Data.Dynamic (Dynamic, toDyn)
 
--- Import all relevant handler modules here.
 import Handler.Root
 
--- This line actually creates our YesodSite instance. It is the second half
--- of the call to mkYesodData which occurs in Foundation.hs. Please see
--- the comments there for more details.
 mkYesodDispatch "YesodSkeleton" resourcesYesodSkeleton
 
--- This function allocates resources (such as a database connection pool),
--- performs initialization and creates a WAI application. This is also the
--- place to put your migrate statements to have automatic database
--- migrations handled by Yesod.
 withYesodSkeleton :: AppConfig DefaultEnv -> Logger -> (Application -> IO ()) -> IO ()
 withYesodSkeleton conf logger f = do
 #ifdef PRODUCTION
@@ -36,6 +28,5 @@ withYesodSkeleton conf logger f = do
     let h = YesodSkeleton conf logger s
     defaultRunner f h
 
--- for yesod devel
 withDevelAppPort :: Dynamic
 withDevelAppPort = toDyn $ defaultDevelApp withYesodSkeleton
