@@ -1,2 +1,4 @@
 .ghci
 dist/
+*.swp
+*.un~
