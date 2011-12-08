@@ -1,16 +1,11 @@
 name:              yesod-skeleton
 version:           0.0.0
 license:           BSD3
-license-file:      LICENSE
 author:            Harri Salokorpi
-maintainer:        Harri Salokorpi
-synopsis:          The greatest Yesod web application ever.
-description:       I'm sure you can say something clever here if you try.
 category:          Web
 stability:         Experimental
-cabal-version:     >= 1.6
+cabal-version:     >= 1.10
 build-type:        Simple
-homepage:          http://yesod-skeleton.yesodweb.com/
 
 Flag production
     Description:   Build the production executable.
@@ -19,29 +14,6 @@ Flag production
 Flag devel
     Description:   Build for use with "yesod devel"
     Default:       False
-
-library
-    if flag(devel)
-        Buildable: True
-    else
-        Buildable: False
-    exposed-modules: Application
-    other-modules:   Foundation
-                     Import
-                     Settings
-                     Settings.StaticFiles
-                     Handler.Root
-
-    ghc-options:   -Wall -threaded -O0
-
-    extensions: TemplateHaskell
-                QuasiQuotes
-                OverloadedStrings
-                NoImplicitPrelude
-                CPP
-                OverloadedStrings
-                MultiParamTypeClasses
-                TypeFamilies
 
 executable         yesod-skeleton
     if flag(devel)
@@ -53,9 +25,13 @@ executable         yesod-skeleton
     else
         ghc-options:   -Wall -threaded -O0
 
-    main-is:       main.hs
+    main-is:
+                main.hs
+    default-language:
+                Haskell2010
 
-    extensions: TemplateHaskell
+    default-extensions:
+                TemplateHaskell
                 QuasiQuotes
                 OverloadedStrings
                 NoImplicitPrelude
@@ -65,6 +41,7 @@ executable         yesod-skeleton
                 TypeFamilies
 
     build-depends: base                          >= 4          && < 5
+                 , yesod                         >= 0.9.3      && < 0.10
                  , yesod-core                    >= 0.9.3      && < 0.10
                  , yesod-static                  >= 0.3.1      && < 0.4
                  , yesod-default                 >= 0.4        && < 0.5
