@@ -1,4 +1,6 @@
 .ghci
+cabal-dev/
 dist/
+client_session_key.aes
 *.swp
 *.un~
