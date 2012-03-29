@@ -47,6 +47,6 @@ executable         yesod-skeleton
                  , bytestring                    >= 0.9        && < 0.10
                  , text                          >= 0.11       && < 0.12
                  , template-haskell
-                 , shakespeare-text              >= 0.10       && < 0.11
+                 , shakespeare-text              >= 0.11       && < 0.12
                  , wai                           >= 1.1.0      && < 1.2
                  , transformers                  >= 0.2        && < 0.3
