@@ -1,6 +1,5 @@
-import System.IO
-import Data.Function
-import Control.Monad
+{-# LANGUAGE TemplateHaskell, QuasiQuotes, GeneralizedNewtypeDeriving, TypeFamilies, OverloadedStrings, MultiParamTypeClasses #-}
+import qualified Data.Text as T
 
 import Yesod
 
@@ -13,7 +12,7 @@ mkYesod "Skeleton" [parseRoutes|
 |]
 
 getDataR :: Handler RepPlain
-getDataR = return $ RepPlain "Foobar"
+getDataR = return $ RepPlain $ toContent $ T.pack "Foobar"
 
 main :: IO ()
 main = warpDebug 3000 $ Skeleton 

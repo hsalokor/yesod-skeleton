@@ -32,8 +32,8 @@ executable         yesod-skeleton
     default-extensions:
                 TemplateHaskell
                 QuasiQuotes
+                GeneralizedNewtypeDeriving
                 OverloadedStrings
-                NoImplicitPrelude
                 CPP
                 OverloadedStrings
                 MultiParamTypeClasses
